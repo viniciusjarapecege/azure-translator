@@ -57,7 +57,7 @@ async function requestTranslation(desiredLanguage, newJson) {
         const translation = mergeData(PT, result);
         const formattedTranslation = JSON.stringify(translation, null, 2);
 
-        fs.writeFileSync(`${desiredLanguage}.json`, formattedTranslation, 'utf8');
+        fs.writeFileSync(`./languages/${desiredLanguage}.json`, formattedTranslation, 'utf8');
         console.log(`Translation file ${desiredLanguage}.json has been created successfully.`);
     } catch (error) {
         console.log("Error: ", error);
