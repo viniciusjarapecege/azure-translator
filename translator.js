@@ -58,7 +58,7 @@ async function requestTranslation(desiredLanguage, newJson) {
         const formattedTranslation = JSON.stringify(translation, null, 2);
 
         fs.writeFileSync(`./languages/${desiredLanguage}.json`, formattedTranslation, 'utf8');
-        console.log(`Translation file ${desiredLanguage}.json has been created successfully.`);
+        console.log(`Arquivo de tradução ${desiredLanguage}.json foi criado com sucesso.`);
     } catch (error) {
         console.log("Error: ", error);
     }
