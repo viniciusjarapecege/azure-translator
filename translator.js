@@ -70,15 +70,18 @@ const reader = readline.createInterface({
     output: process.stdout,
 });
 
-reader.question("Insira a linguagem desejada para gerar o arquivo traduzido de pt.json: ", function (answer) {
-    const desiredLanguage = answer.trim();
+function askQuestion() {
+    reader.question("Insira a linguagem desejada para gerar o arquivo traduzido de pt.json ou resposta vazia para encerrar: \n", function (answer) {
+        const desiredLanguage = answer.trim();
+        
+        if (desiredLanguage !== '') {
+            const newJson = transformJson(PT);
+            requestTranslation(desiredLanguage, newJson).then(() => askQuestion());
+        } else {
+            console.log("Encerrando");
+            reader.close();
+        }
+    });
+}
 
-    if (desiredLanguage !== '') {
-        const newJson = transformJson(PT);
-        requestTranslation(desiredLanguage, newJson);
-    } else {
-        console.log("PREENCHA A LINGUAGEM DESEJADA");
-    }
-
-    reader.close();
-});
+askQuestion();
