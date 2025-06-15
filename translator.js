@@ -2,7 +2,7 @@ import fs from 'fs';
 import readline from 'readline';
 import axios from 'axios';
 import dotenv from 'dotenv';
-import classLanguage from './pt.json' assert { type: 'json' };
+import classLanguage from './pt.json' with { type: 'json' };
 import appLanguage from './pt.js';
 
 dotenv.config();
